@@ -1,4 +1,4 @@
-name: Build Docker Image with Native Commands
+name: Build Docker Image 
 
 on:
   push:
