@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Docker Build
         run: |
-          docker build . -t $REGISTRY/$IMAGE_NAME:$TAG
+          docker build . -t $REGISTRY/$IMAGE_NAME:$TAG ./frontend/my-angular-app
           echo "Docker build completed successfully!"
           docker images
           docker push $REGISTRY/$IMAGE_NAME:$TAG

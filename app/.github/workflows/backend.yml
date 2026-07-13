@@ -11,8 +11,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
-       contents: read
-       packages: write
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -28,7 +28,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./backend
+          file: ./backend/Dockerfile
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
 # 
@@ -48,4 +49,4 @@ jobs:
             sudo docker pull ghcr.io/riyabhunia2024-tech/my-springboot-app:latest
             sudo docker stop springboot-app || true
             sudo docker rm springboot-app || true
-            sudo docker run -d -p 8080:80 --name springboot-app ghcr.io/riyabhunia2024-tech/my-springboot-app:latest
+            sudo docker run -d -p 8080:8080 --name springboot-app ghcr.io/riyabhunia2024-tech/my-springboot-app:latest
